@@ -1,38 +1,140 @@
-.App {
+/* Styling for the header with added padding */
+header {
+  text-align: center;
+  padding: 40px 20px 20px; /* Add more padding to the top */
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Heading styling */
+header h1 {
+  margin: 0;
+  font-size: 2em;
+  color: #333;
+}
+
+/* Paragraph styling */
+header p {
+  margin: 0px 0 0px; /* Space below the paragraph */
+  color: #666;
+  font-size: 1.2em;
+}
+
+/* Container for the switches and title */
+.switches-container {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Title styling above the switches */
+.switches-title {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 20px; /* Space below the title */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Flexbox layout for the switches */
+.switches {
+  display: flex;
+  justify-content: center; /* Center the switches horizontally */
+  gap: 20px; /* Space between the switches */
+  margin-top: 20px; /* Space between the paragraph and switches */
+  flex-wrap: wrap; /* Allow switches to wrap on smaller screens */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Full-screen background with smooth transition */
+.wall {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh; /* Ensure background covers the full height of the screen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
+  padding-bottom: 20px; /* Avoid cutting off elements at the bottom */
+}
+
+/* Light background when the light is on */
+.wall.on {
+  background-color: white;
+}
+
+/* Dark background when the light is off */
+.wall.off {
+  background-color: black;
+}
+
+/* Styling for the switch plate */
+.switch-plate {
+  width: 150px;
+  height: 250px;
+  background-color: lightgoldenrodyellow;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: center; /* Center elements vertically */
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  position: relative; /* Ensure the switch handle moves independently */
+  transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
 }
 
-.App-link {
-  color: #61dafb;
+/* Darken the switch plate when off */
+.off .switch-plate {
+  background-color: rgb(88, 88, 71);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Screw styling */
+.screw {
+  width: 15px;
+  height: 15px;
+  border: 1px solid lightgrey;
+  border-radius: 50%;
+  background-color: lightgoldenrodyellow;
+  box-shadow: 2px 2px 4px darkgrey;
+  margin: 5px 0; /* Space out the screws */
+}
+
+/* Darken the screws when off */
+.off .screw {
+  background-color: rgb(88, 88, 71);
+}
+
+/* Switch styling */
+.switch {
+  width: 30px;
+  height: 80px;
+  background-color: rgba(223, 223, 152, 0.6);
+  border-radius: 5px;
+  position: relative;
+}
+
+/* Handle styling with smooth movement */
+.switch-handle {
+  position: absolute;
+  background-color: rgb(223, 223, 152);
+  border: 1px solid black;
+  width: 24px;
+  height: 50px;
+  left: 2px;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth handle movement with easing effect */
+}
+
+/* Move handle up when on */
+.switch.on .switch-handle {
+  transform: translateY(-30px);
+}
+
+/* Move handle down when off */
+.switch.off .switch-handle {
+  transform: translateY(30px);
+}
+
+/* Make the switches stack vertically on small screens */
+@media (max-width: 600px) {
+  .switches {
+    flex-direction: column;
+    align-items: center; /* Center the switches vertically */
+    gap: 10px; /* Adjust the gap between switches for vertical layout */
   }
 }
